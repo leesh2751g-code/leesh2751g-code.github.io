@@ -24,7 +24,8 @@
       left: 0;
       width: 100%;
       height: 100%;
-      object-fit: contain; background:black;
+      object-fit: contain;
+      background: black;
       z-index: -1;
     }
 
@@ -46,39 +47,37 @@
       font-weight: bold;
     }
 
+    /* 하트 버튼 */
     #play-btn {
       position: fixed;
       bottom: 20px;
       left: 20px;
-      width: 50px;
-      height: 50px;
-      border-radius: 50%;
+      width: 60px;
+      height: 60px;
       border: none;
-      background-color: rgba(255, 255, 255, 0.5);
+      background-color: rgba(255, 255, 255, 0.7);
       cursor: pointer;
       z-index: 2;
-      transition: background-color 0.3s;
+      transition: 0.3s;
+      clip-path: path('M24 4c-5 0-9 4-9 9 0 7 9 13 15 17 6-4 15-10 15-17 0-5-4-9-9-9-3 0-6 2-7 4-1-2-4-4-7-4z');
     }
 
     #play-btn:hover {
-      background-color: rgba(255, 255, 255, 0.8);
+      background-color: rgba(255, 255, 255, 0.9);
     }
   </style>
 </head>
 <body>
 
-  <!-- 배경 영상 (트리.mp4) -->
   <video id="bg-video" loop playsinline muted>
     <source src="트리.mp4" type="video/mp4">
   </video>
 
-  <!-- 시계 박스 -->
   <div class="clock-box">
     <div id="date"></div>
     <div id="time"></div>
   </div>
 
-  <!-- 소리 재생 버튼 -->
   <button id="play-btn"></button>
 
   <script>
@@ -93,12 +92,18 @@
       const month = padZero(now.getMonth() + 1);
       const date = padZero(now.getDate());
 
-      const hours = padZero(now.getHours());
+      // 12시간제 변환
+      let hours = now.getHours();
+      let ampm = hours >= 12 ? "오후" : "오전";
+      hours = hours % 12;
+      hours = hours === 0 ? 12 : hours;
+      hours = padZero(hours);
+
       const minutes = padZero(now.getMinutes());
       const seconds = padZero(now.getSeconds());
 
       document.getElementById('date').textContent = `${year}-${month}-${date}`;
-      document.getElementById('time').textContent = `${hours}:${minutes}:${seconds}`;
+      document.getElementById('time').textContent = `${ampm} ${hours}:${minutes}:${seconds}`;
     }
 
     setInterval(updateClock, 1000);

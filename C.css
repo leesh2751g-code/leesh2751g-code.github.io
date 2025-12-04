@@ -1,4 +1,4 @@
-body {
+/* body {
   margin: 0;
   padding: 0;
   background: url('트리.mov') no-repeat center center fixed;
@@ -17,6 +17,48 @@ body {
   padding: 20px 40px;
   border-radius: 12px;
   text-align: center;
+}
+
+#date, #weekday {
+  font-size: 24px;
+  margin-bottom: 8px;
+}
+
+#time {
+  font-size: 32px;
+  font-weight: bold;
+} */
+
+body {
+  margin: 0;
+  padding: 0;
+  overflow: hidden; /* 스크롤 방지 */
+  font-family: 'Arial', sans-serif;
+  color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
+/* 배경 영상 스타일 */
+#bg-video {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  min-width: 100%;
+  min-height: 100%;
+  z-index: -1;      /* 콘텐츠 뒤로 보내기 */
+  object-fit: cover; /* 화면을 꽉 채우기 */
+}
+
+.clock-box {
+  background: rgba(0, 0, 0, 0.5);
+  padding: 20px 40px;
+  border-radius: 12px;
+  text-align: center;
+  z-index: 10;
 }
 
 #date, #weekday {

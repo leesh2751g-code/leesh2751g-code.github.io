@@ -1,28 +1,121 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Christmas Clock</title>
-  <link rel="stylesheet" href="C.css">
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+      font-family: 'Arial', sans-serif;
+      color: #ffffff;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+    }
+
+    #bg-video {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: -1;
+    }
+
+    .clock-box {
+      background: rgba(0, 0, 0, 0.5);
+      padding: 20px 40px;
+      border-radius: 12px;
+      text-align: center;
+      z-index: 1;
+    }
+
+    #date, #weekday {
+      font-size: 24px;
+      margin-bottom: 8px;
+    }
+
+    #time {
+      font-size: 32px;
+      font-weight: bold;
+    }
+
+    #play-btn {
+      position: fixed;
+      bottom: 20px;
+      left: 20px;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      border: none;
+      background-color: rgba(255, 255, 255, 0.5);
+      cursor: pointer;
+      z-index: 2;
+      transition: background-color 0.3s;
+    }
+
+    #play-btn:hover {
+      background-color: rgba(255, 255, 255, 0.8);
+    }
+  </style>
 </head>
 <body>
 
-  <!-- 배경 영상 -->
-  <video id="bg-video" loop playsinline>
-    <source src="트리.mov" type="video/quicktime">
+  <!-- MP4 배경 영상 (소리 포함) -->
+  <video id="bg-video" loop playsinline muted>
+    <source src="트.mp4" type="video/mp4" />
   </video>
 
   <!-- 시계 박스 -->
   <div class="clock-box">
     <div id="date"></div>
-    <div id="weekday"></div>
+    
     <div id="time"></div>
   </div>
 
   <!-- 소리 재생 버튼 -->
   <button id="play-btn"></button>
 
-  <script src="C.js"></script>
+  <script>
+    function padZero(num) {
+      return num < 10 ? "0" + num : num;
+    }
+
+    function updateClock() {
+      const now = new Date();
+
+      const year = now.getFullYear();
+      const month = padZero(now.getMonth() + 1);
+      const date = padZero(now.getDate());
+
+      const hours = padZero(now.getHours());
+      const minutes = padZero(now.getMinutes());
+      const seconds = padZero(now.getSeconds());
+
+      // 요일 기능 제거
+
+      document.getElementById("date").textContent = `${year}-${month}-${date}`;
+      document.getElementById("time").textContent = `${hours}:${minutes}:${seconds}`;
+      // 요일 출력 제거
+    }
+
+    setInterval(updateClock, 1000);
+    updateClock();
+
+    const video = document.getElementById("bg-video");
+    const btn = document.getElementById("play-btn");
+
+    btn.addEventListener("click", () => {
+      video.muted = false;
+      video.play();
+      btn.style.display = "none";
+    });
+  </script>
 </body>
 </html>

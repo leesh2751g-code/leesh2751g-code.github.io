@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Christmas Clock</title>
   <style>
     body {
@@ -36,7 +36,7 @@
       z-index: 1;
     }
 
-    #date, #weekday {
+    #date {
       font-size: 24px;
       margin-bottom: 8px;
     }
@@ -67,15 +67,14 @@
 </head>
 <body>
 
-  <!-- MP4 배경 영상 (소리 포함) -->
+  <!-- 배경 영상 (트리.mp4) -->
   <video id="bg-video" loop playsinline muted>
-    <source src="트리.mp4" type="video/mp4" />
+    <source src="트리.mp4" type="video/mp4">
   </video>
 
   <!-- 시계 박스 -->
   <div class="clock-box">
     <div id="date"></div>
-    
     <div id="time"></div>
   </div>
 
@@ -84,7 +83,7 @@
 
   <script>
     function padZero(num) {
-      return num < 10 ? "0" + num : num;
+      return num < 10 ? '0' + num : num;
     }
 
     function updateClock() {
@@ -98,23 +97,20 @@
       const minutes = padZero(now.getMinutes());
       const seconds = padZero(now.getSeconds());
 
-      // 요일 기능 제거
-
-      document.getElementById("date").textContent = `${year}-${month}-${date}`;
-      document.getElementById("time").textContent = `${hours}:${minutes}:${seconds}`;
-      // 요일 출력 제거
+      document.getElementById('date').textContent = `${year}-${month}-${date}`;
+      document.getElementById('time').textContent = `${hours}:${minutes}:${seconds}`;
     }
 
     setInterval(updateClock, 1000);
     updateClock();
 
-    const video = document.getElementById("bg-video");
-    const btn = document.getElementById("play-btn");
+    const video = document.getElementById('bg-video');
+    const btn = document.getElementById('play-btn');
 
-    btn.addEventListener("click", () => {
+    btn.addEventListener('click', () => {
       video.muted = false;
       video.play();
-      btn.style.display = "none";
+      btn.style.display = 'none';
     });
   </script>
 </body>

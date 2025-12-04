@@ -8,27 +8,20 @@
 </head>
 <body>
 
+  <!-- 배경 영상 -->
+  <video id="bg-video" loop playsinline>
+    <source src="트리.mov" type="video/quicktime">
+  </video>
+
+  <!-- 시계 박스 -->
   <div class="clock-box">
     <div id="date"></div>
+    <div id="weekday"></div>
     <div id="time"></div>
   </div>
 
-  <video autoplay loop muted playsinline id="bg-video">
-  <source src="트리.mov" type="video/quicktime">
-</video>
-
-  <video id="bg-video" loop playsinline>
-  <source src="트리.mov" type="video/quicktime">
-</video>
-
-<button id="play-btn">배경음악 켜기</button>
-
-<!-- <div class="clock-box">
-  <div id="date"></div>
-  <div id="weekday"></div>
-  <div id="time"></div>
-</div> -->
-
+  <!-- 소리 재생 버튼 -->
+  <button id="play-btn"></button>
 
   <script src="C.js"></script>
 </body>

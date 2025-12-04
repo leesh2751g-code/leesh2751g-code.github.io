@@ -22,6 +22,13 @@ function updateClock() {
   document.getElementById('weekday').textContent = `${weekday}`;
 }
 
+const video = document.getElementById('bg-video');
+const btn = document.getElementById('play-btn');
+
+btn.addEventListener('click', () => {
+  video.play();  // 사용자의 클릭 후 재생 가능
+});
+
 // 1초마다 업데이트
 setInterval(updateClock, 1000);
 // 초기 실행

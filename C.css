@@ -1,0 +1,30 @@
+body {
+  margin: 0;
+  padding: 0;
+  background: url('트리.jpg') no-repeat center center fixed;
+  background-size: contain;
+  font-family: 'Arial', sans-serif;
+  color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
+.clock-box {
+  background: rgba(0, 0, 0, 0.5);
+  padding: 20px 40px;
+  border-radius: 12px;
+  text-align: center;
+}
+
+#date, #weekday {
+  font-size: 24px;
+  margin-bottom: 8px;
+}
+
+#time {
+  font-size: 32px;
+  font-weight: bold;
+}
